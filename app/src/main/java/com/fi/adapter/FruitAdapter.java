@@ -44,16 +44,32 @@ public class FruitAdapter extends ArrayAdapter<Fruit> {
         //我们在getView方法中进行了判断，如果convertView为空，则使用LayoutInflater加载布局，如果不为空则直接对convertView进行重用。
         //这样就大大提高了ListView的运行效率，在快速滚动的时候也可以表现出更好的性能。
         View view;
+        ViewHolder viewHolder;
         if (convertView==null){
             view= LayoutInflater.from(getContext()).inflate(resourceId,null);
+            viewHolder=new ViewHolder();
+            viewHolder.fruitImage= (ImageView) view.findViewById(R.id.fruit_image);
+            viewHolder.fruitName= (TextView) view.findViewById(R.id.fruit_name);
+            view.setTag(viewHolder);
         }else {
             view=convertView;
+            viewHolder= (ViewHolder) view.getTag();
         }
-        ImageView fruitImage= (ImageView) view.findViewById(R.id.fruit_image);
+        /*ImageView fruitImage= (ImageView) view.findViewById(R.id.fruit_image);
         TextView fruitName= (TextView) view.findViewById(R.id.fruit_name);
         fruitImage.setImageResource(fruit.getImageId());
-        fruitName.setText(fruit.getName());
+        fruitName.setText(fruit.getName());*/
+        viewHolder.fruitImage.setImageResource(fruit.getImageId());
+        viewHolder.fruitName.setText(fruit.getName());
         return view;
+    }
+    //每次在getView方法中还是会调用View的findViewById方法来获取一次控件的实例。可以使用ViewHolder进行性能优化。
+    //新增一个内部类ViewHolder,用于对控件的实例进行缓存。当convertView为空的时候，创建一个ViewHolder对象，并将控件的实例都存放在ViewHolder里，然后
+    //调用View的setTag方法，将ViewHolder对象存储在View中。当convertView不为空的时候，则调用View的getTag方法，把ViewHolder重新取出来。这样所有的控件都
+    //缓存在了ViewHolder里，就没有必要每次都通过findViewById方法来获取控件实例。
+    class ViewHolder{
+        ImageView fruitImage;
+        TextView fruitName;
     }
 
 }

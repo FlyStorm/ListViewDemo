@@ -10,6 +10,8 @@ package com.fi.activity;
  * 更新时间   $$Date$$
  * 更新描述   ${TODO}
  */
-public class HelloWorld {
-
+//测试接口
+public interface HelloWorld {
+    public void say();
+    public int add();
 }

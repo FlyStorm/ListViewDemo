@@ -36,7 +36,19 @@ public class FruitAdapter extends ArrayAdapter<Fruit> {
         //获取当前项Fruit的实例
         Fruit fruit=getItem(position);
         //使用LayoutInflater来为这个子项加载我们传入的布局
-        View view= LayoutInflater.from(getContext()).inflate(resourceId,null);
+        //View view= LayoutInflater.from(getContext()).inflate(resourceId,null);
+
+        //提升ListView的运行效率
+        //因为在FruitAdapter的getView方法中每次都将布局重新加载一遍，当ListView快速滚动时性能就比较差
+        //convertView这个参数是将之前加载好的布局进行缓存，以便之后可以重用。
+        //我们在getView方法中进行了判断，如果convertView为空，则使用LayoutInflater加载布局，如果不为空则直接对convertView进行重用。
+        //这样就大大提高了ListView的运行效率，在快速滚动的时候也可以表现出更好的性能。
+        View view;
+        if (convertView==null){
+            view= LayoutInflater.from(getContext()).inflate(resourceId,null);
+        }else {
+            view=convertView;
+        }
         ImageView fruitImage= (ImageView) view.findViewById(R.id.fruit_image);
         TextView fruitName= (TextView) view.findViewById(R.id.fruit_name);
         fruitImage.setImageResource(fruit.getImageId());

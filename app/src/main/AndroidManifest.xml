@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SimpleListViewActivity"/>
+        <activity android:name=".CustomListViewActivity"/>
     </application>
 
 </manifest>

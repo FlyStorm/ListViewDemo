@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     //声明控件
@@ -40,7 +39,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 startActivity(new Intent(this,SimpleListViewActivity.class));
                 break;
             case R.id.btn2:
-                Toast.makeText(this,"btn2",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this,"btn2",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this,CustomListViewActivity.class));
                 break;
             default:
                 break;

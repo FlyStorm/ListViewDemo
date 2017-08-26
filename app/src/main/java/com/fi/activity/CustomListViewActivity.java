@@ -2,7 +2,10 @@ package com.fi.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.fi.adapter.FruitAdapter;
 import com.fi.view.Fruit;
@@ -36,6 +39,17 @@ public class CustomListViewActivity extends Activity {
         FruitAdapter adapter=new FruitAdapter(this,R.layout.fruit_item,mFruitList);
         //设置适配器
         listView.setAdapter(adapter);
+
+        //设置ListView的点击事件
+        //ListView的滚动毕竟只是满足了我们视觉的效果，可是如果ListView中的子项不能点击的话，这个控件就没有什么实际的用途了。
+        //使用setOnItemClickListener方法来为ListView注册一个监听器。当用户点击了ListView的任何一个子项时就会回调onItemClick()方法。
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Fruit fruit = mFruitList.get(position);
+                Toast.makeText(CustomListViewActivity.this,fruit.getName(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void initFruits() {

@@ -1,4 +1,4 @@
-package com.fi.adapter;
+package com.listviewdemo.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,8 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.fi.activity.R;
-import com.fi.view.Fruit;
+import com.listviewdemo.activity.R;
+import com.listviewdemo.view.Fruit;
 
 import java.util.List;
 

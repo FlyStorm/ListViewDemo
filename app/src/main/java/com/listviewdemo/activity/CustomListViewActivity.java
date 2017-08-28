@@ -1,4 +1,4 @@
-package com.fi.activity;
+package com.listviewdemo.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,8 +7,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.fi.adapter.FruitAdapter;
-import com.fi.view.Fruit;
+import com.listviewdemo.adapter.FruitAdapter;
+import com.listviewdemo.view.Fruit;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.fi.activity;
+package com.listviewdemo.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
